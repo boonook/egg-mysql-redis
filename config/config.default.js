@@ -23,25 +23,25 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
-  // config.mysql={
-  //   //database configuration
-  //   client:{
-  //     //host
-  //     host:'localhost',
-  //     //port
-  //     port:'3306',
-  //     //username
-  //     user:'root',
-  //     //password
-  //     password:'123456',
-  //     //database
-  //     database:'test'
-  //   },
-  //   //load into app,default is open //加载到应用程序，默认为打开
-  //   app:true,
-  //   //load into agent,default is close //加载到代理中，默认值为“关闭”
-  //   agent:false,
-  // };
+  config.mysql={
+    //database configuration
+    client:{
+      //host
+      host:'localhost',
+      //port
+      port:'3306',
+      //username
+      user:'root',
+      //password
+      password:'123456',
+      //database
+      database:'zhdj'
+    },
+    //load into app,default is open //加载到应用程序，默认为打开
+    app:true,
+    //load into agent,default is close //加载到代理中，默认值为“关闭”
+    agent:false,
+  };
 
   return {
     ...config,
