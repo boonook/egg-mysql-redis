@@ -37,9 +37,7 @@ module.exports = appInfo => {
       //database
       database:'zhdj'
     },
-    //load into app,default is open //加载到应用程序，默认为打开
     app:true,
-    //load into agent,default is close //加载到代理中，默认值为“关闭”
     agent:false,
   };
 
