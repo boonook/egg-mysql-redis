@@ -37,9 +37,9 @@ class UserController extends Controller {
 
   async list() {
     // /获取？形势的参数
-    let {id} = this.ctx.params;
-    const user = await this.app.mysql.get('user', { id: 1 });
-    this.ctx.body =await this.ctx.service.user.userList(id);
+    await this.app.redis.set('foo', 'bar');
+    // get
+    this.ctx.body =await this.app.redis.get('foo');
   }
 
   async lists() {
