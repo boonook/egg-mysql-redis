@@ -24,7 +24,13 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
   // 登录
   async login() {
-    this.ctx.body =await this.ctx.service.user.register();
+    let params = this.ctx.params;
+    let send = {
+      code:200,
+      data:params,
+      message:'操作成功'
+    };
+    this.ctx.body =send||{}
   }
 
   async add() {
@@ -46,12 +52,17 @@ class UserController extends Controller {
 
     ///获取/:id形式的参数
     let {id} = this.ctx.params;
-    this.ctx.body =await this.app.mysql.select('user', {
+    let data = await this.app.mysql.select('user', {
       columns: ['id', 'name'],
       orders: [
         ['id', 'desc'] //降序desc，升序asc
       ],
     });
+    this.ctx.body ={
+      code:200,
+      data,
+      message:'操作成功'
+    }
   }
 
 }
