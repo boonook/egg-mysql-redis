@@ -28,13 +28,17 @@ class UserController extends Controller {
   }
 
   async add() {
+    let date = (new Date()).getTime();
+    const result = await this.app.mysql.insert('user', {
+      name: 'Jack'+date,
+    });
     this.ctx.body = '新增';
   }
 
   async list() {
-    ///获取？形势的参数
+    // /获取？形势的参数
     let {id} = this.ctx.params;
-    let user = await this.app.mysql.get('user', { id: 1 });
+    const user = await this.app.mysql.get('user', { id: 1 });
     this.ctx.body =await this.ctx.service.user.userList(id);
   }
 
@@ -42,7 +46,12 @@ class UserController extends Controller {
 
     ///获取/:id形式的参数
     let {id} = this.ctx.params;
-    this.ctx.body =await this.ctx.service.user.userList(id);
+    this.ctx.body =await this.app.mysql.select('user', {
+      columns: ['id', 'name'],
+      orders: [
+        ['id', 'desc'] //降序desc，升序asc
+      ],
+    });
   }
 
 }
