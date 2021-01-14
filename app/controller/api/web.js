@@ -1,15 +1,14 @@
 'use strict';
-
+const fs = require('fs');
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
   // 登录
   async home() {
-    this.ctx.body = '首页';
-  }
-
-  async notice() {
-    this.ctx.body = '消息';
+    const data = fs.readFileSync('./app/public/json/city.json');
+    let res = data.toString();
+    const userList = JSON.parse(res);
+    this.ctx.body = userList;
   }
 
   async newList() {

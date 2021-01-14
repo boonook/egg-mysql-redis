@@ -24,6 +24,10 @@ class UserService extends Service {
       message: "success",
     }
   }
+
+  async say() {
+    return 'Hello Man!';
+  }
 }
 
 module.exports = UserService;
